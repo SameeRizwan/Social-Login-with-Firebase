@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { facebookAuth, googleAuth } from "../utils/Firebase";
+import { facebookAuth, googleAuth, FirebasesignIn } from "../utils/Firebase";
 
 import "./login.css";
 
@@ -20,14 +20,15 @@ function Login() {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const user = await FirebasesignIn();
     console.log(user);
   };
 
   const handleFacebook = async (event) => {
     event.preventDefault();
-    const user = facebookAuth();
+    const user = await facebookAuth();
     console.log(user);
   };
 

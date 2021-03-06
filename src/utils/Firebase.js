@@ -30,3 +30,16 @@ export const googleAuth = async () => {
     // var errorMessage = error.message;
   }
 };
+
+export const FirebasesignIn = async (email, password) => {
+  try {
+    let user = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password);
+    return user;
+  } catch (error) {
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
+  }
+  // [END auth_signin_password]
+};
